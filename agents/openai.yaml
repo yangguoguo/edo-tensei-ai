@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portable AI Memory"
+  short_description: "建立、更新、恢复和迁移可携带的个人 AI 长期记忆库"
+  default_prompt: "Use $portable-ai-memory to initialize or update my portable AI memory library."
