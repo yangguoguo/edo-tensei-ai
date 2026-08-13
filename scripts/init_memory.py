@@ -18,6 +18,8 @@ def main() -> int:
     destination.mkdir(parents=True, exist_ok=True)
     shutil.copytree(template, destination, dirs_exist_ok=True)
     print(f"Initialized portable AI memory at {destination}")
+    print("Next: validate the library, then ask the user whether to create weekly maintenance.")
+    print("Do not create a recurring Automation without explicit user consent.")
     return 0
 
 

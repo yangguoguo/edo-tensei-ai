@@ -44,6 +44,21 @@ python3 scripts/init_memory.py --destination /absolute/path/to/personal-ai-memor
 3. Import user-provided background material into the appropriate files.
 4. Run `python3 scripts/check_memory.py /absolute/path/to/personal-ai-memory`.
 5. Tell the user what was created, what remains uncertain, and how to invoke the restore workflow.
+6. Ask whether the user wants weekly automatic maintenance. Do not create an Automation without explicit consent.
+7. If the user agrees, ask for the preferred weekday and local time, confirm the memory-library path and accessible project, then create a weekly Codex Automation using `references/automation-prompt.md`.
+8. After creation, verify that the Automation is `ACTIVE` and report its name, schedule, project, and memory path. If Automations are unavailable in the current AI environment, provide the prompt and explain that the user must create scheduling separately.
+
+## Set up weekly maintenance
+
+Treat the Skill and the schedule as separate components: the Skill defines how maintenance works; the Automation decides when it runs.
+
+1. Require explicit user consent before creating or changing a recurring task.
+2. Use a weekly standalone project Automation that can read and write both the Skill directory and the private memory library. Do not attach another user's paths or schedule.
+3. Let the user choose the weekday and local time. If the user asks for a quick default, suggest Sunday at 20:00 local time and state that it is only a default.
+4. Use the current configured default model unless the user requests another model or the Automation interface requires an explicit supported model.
+5. Use the full maintenance prompt in `references/automation-prompt.md`, replacing the absolute path placeholder.
+6. Verify the created task's status and recurrence from the Automation configuration. Never claim it will run merely because the Skill was installed.
+7. Explain the data boundary: a scheduled run can use its project files and visible task context, but cannot silently read all conversations across AI accounts.
 
 ## Restore
 
@@ -80,6 +95,6 @@ Read `references/update-policy.md` before changing memory.
 
 ## Automation boundary
 
-A scheduled agent can review only data available in its configured project and task context. It cannot act as an account-wide conversation reader. Prefer a weekly run that uses visible context, applies confirmed low-risk updates, and creates no change when there is no durable new information. Users may explicitly provide a conversation or note for one-time extraction, but the source should remain outside the memory library. Never claim cross-account synchronization unless an external export or connector actually provides it.
+A scheduled agent can review only data available in its configured project and task context. It cannot act as an account-wide conversation reader. Installing this Skill does not create a schedule by itself; the initialization flow must offer an opt-in weekly Automation. Prefer a weekly run that uses visible context, applies confirmed low-risk updates, and creates no change when there is no durable new information. Users may explicitly provide a conversation or note for one-time extraction, but the source should remain outside the memory library. Never claim cross-account synchronization unless an external export or connector actually provides it.
 
 For a suggested automation prompt, read `references/automation-prompt.md`.
