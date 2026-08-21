@@ -1,9 +1,9 @@
 ---
-name: portable-ai-memory
+name: edo-tensei-ai
 description: Build, restore, review, and incrementally update a portable Markdown-based personal AI memory library. Use when a user wants an AI continuity or "digital resurrection" system, needs to carry identity, preferences, interests, projects, decisions, and collaboration style across AI agents or accounts, wants to import conversation exports or notes into durable memory, or asks for a weekly memory review. Keep reusable skill files separate from private user memory.
 ---
 
-# Portable AI Memory
+# Edo Tensei AI
 
 Maintain a user-owned Markdown memory library that any capable AI agent can read. Treat it as a curated personal context layer, not a transcript archive and not an unquestionable profile.
 
